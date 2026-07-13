@@ -1,0 +1,247 @@
+{
+    "season": "2026",
+    "constructors": [
+        {
+            "name": "BWT Alpine F1 Team",
+            "nation": "France",
+            "racecar": {
+              "chassis": "AMR26",
+              "engine": "Mercedes-AMG F1 M17"
+            },
+            "drivers": [
+              {
+                "first_name": "Pierre",
+                "last_name": "Gasly",
+                "nationality": "French",
+                "permanent_number": 10
+              },
+              {
+                "first_name": "Franco",
+                "last_name": "Colapinto",
+                "nationality": "Argentinian",
+                "permanent_number": 43
+              }
+            ]
+          },
+          {
+            "name": "Aston Martin Aramco F1 Team",
+            "nation": "United Kingdom",
+            "racecar": {
+              "chassis": "AMR26",
+              "engine": "Honda RAH626H"
+            },
+            "drivers": [
+              {
+                "first_name": "Fernando",
+                "last_name": "Alonso",
+                "nationality": "Spanish",
+                "permanent_number": 14
+              },
+              {
+                "first_name": "Lance",
+                "last_name": "Stroll",
+                "nationality": "Canadian",
+                "permanent_number": 18
+              }
+            ]
+          },
+          {
+            "name": "Atlassian Williams F1 Team",
+            "nation": "United Kingdom",
+            "racecar": {
+              "chassis": "FW48",
+              "engine": "Mercedes-AMG F1 M17"
+            },
+            "drivers": [
+              {
+                "first_name": "Alexander",
+                "last_name": "Albon",
+                "nationality": "Thai",
+                "permanent_number": 23
+              },
+              {
+                "first_name": "Carlos",
+                "last_name": "Sainz, Jr.",
+                "nationality": "Spanish",
+                "permanent_number": 55
+              }
+            ]
+          },
+          {
+            "name": "Audi Revolut F1 Team",
+            "nation": "Germany  ",
+            "racecar": {
+              "chassis": "R26",
+              "engine": "Audi AFR 26 Hybrid"
+            },
+            "drivers": [
+              {
+                "first_name": "Gabriel",
+                "last_name": "Bartoleto",
+                "nationality": "Brazilian",
+                "permanent_number": 5
+              },
+              {
+                "first_name": "Nico",
+                "last_name": "Hulkenberg",
+                "nationality": "German",
+                "permanent_number": 27
+              }
+            ]
+          },
+          {
+            "name": "Cadillac Formula 1 Team",
+            "nation": "United States of America",
+            "racecar": {
+              "chassis": "MAC-26",
+              "engine": "Ferrari 067/6"
+            },
+            "drivers": [
+              {
+                "first_name": "Sergio",
+                "last_name": "Perez",
+                "nationality": "Mexican",
+                "permanent_number": 11
+              },
+              {
+                "first_name": "Valterri",
+                "last_name": "Bottas",
+                "nationality": "Finnish",
+                "permanent_number": 77
+              }
+            ]
+          },
+          {
+            "name": "Scuderia Ferrari HP",
+            "nation": "Italy",
+            "racecar": {
+              "chassis": "SF-26",
+              "engine": "Ferrari 067/6"
+            },
+            "drivers": [
+              {
+                "first_name": "Charles",
+                "last_name": "Leclerc",
+                "nationality": "Monegasque",
+                "permanent_number": 16
+              },
+              {
+                "first_name": "Lewis",
+                "last_name": "Hamilton",
+                "nationality": "British",
+                "permanent_number": 44
+              }
+            ]
+          },
+          {
+            "name": "TGR Haas F1 Team",
+            "nation": "United States of America",
+            "racecar": {
+              "chassis": "VF-26",
+              "engine": "Ferrari 067/6"
+            },
+            "drivers": [
+              {
+                "first_name": "Esteban",
+                "last_name": "Ocon",
+                "nationality": "French",
+                "permanent_number": 31
+              },
+              {
+                "first_name": "Oliver",
+                "last_name": "Bearman",
+                "nationality": "British",
+                "permanent_number": 87
+              }
+            ]
+          },
+          {
+            "name": "McLaren Mastercard F1 Team",
+            "nation": "United Kingdom",
+            "racecar": {
+              "chassis": "MCL40",
+              "engine": "Mercedes-AMG F1 M17"
+            },
+            "drivers": [
+              {
+                "first_name": "Lando",
+                "last_name": "Norris",
+                "nationality": "British",
+                "permanent_number": 1
+              },
+              {
+                "first_name": "Oscar",
+                "last_name": "Piastri",
+                "nationality": "Australian",
+                "permanent_number": 81
+              }
+            ]
+        },
+        {
+            "name": "Mercedes-AMG Petronas F1 Team",
+            "nation": "Germany",
+            "racecar": {
+              "chassis": "F1 W17",
+              "engine": "Mercedes-AMG F1 M17"
+            },
+            "drivers": [
+              {
+                "first_name": "Kimi",
+                "last_name": "Antonelli",
+                "nationality": "Italy",
+                "permanent_number": 12
+              },
+              {
+                "first_name": "George",
+                "last_name": "Russell",
+                "nationality": "British",
+                "permanent_number": 63
+              }
+            ]
+        },
+        {
+            "name": "Visa Cash App Racing Bulls F1 Team",
+            "nation": "Italy",
+            "racecar": {
+              "chassis": "VCARB 03",
+              "engine": "Red Bull Ford DM01"
+            },
+            "drivers": [
+              {
+                "first_name": "Liam",
+                "last_name": "Lawson",
+                "nationality": "Australian",
+                "permanent_number": 30
+              },
+              {
+                "first_name": "Arvid",
+                "last_name": "Lindblad",
+                "nationality": "British",
+                "permanent_number": 41
+              }
+            ]
+        },
+        {
+            "name": "Oracle Red Bull Racing",
+            "nation": "Austria",
+            "racecar": {
+              "chassis": "RB22",
+              "engine": "Red Bull Ford DM01"
+            },
+            "drivers": [
+              {
+                "first_name": "Max",
+                "last_name": "Verstappen",
+                "nationality": "Dutch",
+                "permanent_number": 3
+              },
+              {
+                "first_name": "Isack",
+                "last_name": "Hadjar",
+                "nationality": "French",
+                "permanent_number": 6
+              }
+            ]
+        }
+    ]
+}
