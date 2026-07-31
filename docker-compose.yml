@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+    container_name: f1-stats
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_DEBUG: "true"
+    restart: unless-stopped

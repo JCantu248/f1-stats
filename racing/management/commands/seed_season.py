@@ -88,4 +88,4 @@ class Command(BaseCommand):
         except KeyError as ex:
             raise CommandError(
                 f"Missing required field in JSON: {ex}"
-            )
+            )   
