@@ -1,12 +1,10 @@
-from django.test import TestCase
-
 # Create your tests here.
 from datetime import date
 
 from django.test import TestCase
 from django.urls import reverse
 
-from racing.models import Circuit, Constructor, Driver, Race, Season
+from racing.models import Circuit, Driver, Race, Season
 
 
 class RaceApiTests(TestCase):

@@ -9,7 +9,7 @@ from .models import (
     Race,
     Racecar,
     RaceResult,
-    Season
+    Season,
 )
 
 admin.site.register(

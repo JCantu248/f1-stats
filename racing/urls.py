@@ -2,7 +2,6 @@ from django.urls import path
 
 from racing import views
 
-
 app_name = "racing"
 
 urlpatterns = [
