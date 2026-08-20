@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  backend-quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,8 +24,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Ruff lint
+        run: ruff check .
+
+      - name: Ruff formatting check
+        run: ruff format --check .
+
       - name: Django system check
         run: python manage.py check
+
+      - name: Check for missing migrations
+        run: python manage.py makemigrations --check --dry-run
 
       - name: Run backend tests
         run: python manage.py test
