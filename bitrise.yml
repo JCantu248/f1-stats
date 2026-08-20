@@ -1,0 +1,62 @@
+format_version: "25"
+
+workflows:
+  backend_ci:
+    steps:
+      - git-clone@8: {}
+
+      - script@1:
+          title: Set up Python environment
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                set -euo pipefail
+
+                python3 --version
+                python3 -m pip install --upgrade pip
+                python3 -m pip install -r requirements.txt
+
+      - script@1:
+          title: Ruff lint
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                set -euo pipefail
+
+                ruff check .
+
+      - script@1:
+          title: Ruff formatting check
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                set -euo pipefail
+
+                ruff format --check .
+
+      - script@1:
+          title: Django system check
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                set -euo pipefail
+
+                python3 manage.py check
+
+      - script@1:
+          title: Check for missing migrations
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                set -euo pipefail
+
+                python3 manage.py makemigrations --check --dry-run
+
+      - script@1:
+          title: Run backend tests
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                set -euo pipefail
+
+                python3 manage.py test
