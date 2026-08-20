@@ -38,3 +38,6 @@ jobs:
 
       - name: Run backend tests
         run: python manage.py test
+
+      - name: Build Docker image
+        run: docker build -t f1-stats-backend . 
