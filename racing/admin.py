@@ -22,6 +22,6 @@ admin.site.register(
         Circuit,
         Race,
         QualifyingResult,
-        RaceResult
+        RaceResult,
     ]
 )

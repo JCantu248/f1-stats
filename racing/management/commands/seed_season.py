@@ -37,16 +37,11 @@ class Command(BaseCommand):
             raise CommandError(f"Invalid JSON: {ex}")
 
         try:
-            season, _ = Season.objects.get_or_create(
-                year=data["season"]
-            )
+            season, _ = Season.objects.get_or_create(year=data["season"])
 
-            self.stdout.write(
-                self.style.SUCCESS(f"Loaded season {season.year}")
-            )
+            self.stdout.write(self.style.SUCCESS(f"Loaded season {season.year}"))
 
             for constructor_data in data["constructors"]:
-
                 constructor, _ = Constructor.objects.get_or_create(
                     name=constructor_data["name"],
                     defaults={
@@ -64,7 +59,6 @@ class Command(BaseCommand):
                 )
 
                 for driver_data in constructor_data["drivers"]:
-
                     driver, _ = Driver.objects.get_or_create(
                         permanent_number=driver_data["permanent_number"],
                         defaults={
@@ -79,13 +73,7 @@ class Command(BaseCommand):
                         driver=driver,
                     )
 
-            self.stdout.write(
-                self.style.SUCCESS(
-                    "Season imported successfully."
-                )
-            )
+            self.stdout.write(self.style.SUCCESS("Season imported successfully."))
 
         except KeyError as ex:
-            raise CommandError(
-                f"Missing required field in JSON: {ex}"
-            )   
+            raise CommandError(f"Missing required field in JSON: {ex}")

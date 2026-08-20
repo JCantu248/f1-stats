@@ -98,8 +98,7 @@ class Command(BaseCommand):
 
         if missing_circuit:
             raise CommandError(
-                "Missing required circuit fields: "
-                + ", ".join(missing_circuit)
+                "Missing required circuit fields: " + ", ".join(missing_circuit)
             )
 
         for key in ("qualifying_results", "race_results"):
@@ -113,8 +112,7 @@ class Command(BaseCommand):
             return Season.objects.get(year=year)
         except Season.DoesNotExist as exc:
             raise CommandError(
-                f"Season {year} does not exist. "
-                "Run seed_season first."
+                f"Season {year} does not exist. Run seed_season first."
             ) from exc
 
     def _upsert_circuit(self, circuit_data: dict[str, Any]) -> Circuit:
@@ -136,9 +134,7 @@ class Command(BaseCommand):
         try:
             race_date = date.fromisoformat(data["race_date"])
         except (TypeError, ValueError) as exc:
-            raise CommandError(
-                "'race_date' must use YYYY-MM-DD format."
-            ) from exc
+            raise CommandError("'race_date' must use YYYY-MM-DD format.") from exc
 
         race, _ = Race.objects.update_or_create(
             season=season,
@@ -236,20 +232,14 @@ class Command(BaseCommand):
                 driver_entry=driver_entry,
                 defaults={
                     "grid_position": result.get("grid_position"),
-                    "finishing_position": result.get(
-                        "finishing_position"
-                    ),
+                    "finishing_position": result.get("finishing_position"),
                     "laps_completed": result.get(
                         "laps_completed",
                         0,
                     ),
                     "total_time": result.get("total_time"),
-                    "fastest_lap_time": result.get(
-                        "fastest_lap_time"
-                    ),
-                    "fastest_lap_number": result.get(
-                        "fastest_lap_number"
-                    ),
+                    "fastest_lap_time": result.get("fastest_lap_time"),
+                    "fastest_lap_number": result.get("fastest_lap_number"),
                     "points": result.get("points", 0),
                     "status": result.get(
                         "status",
@@ -268,14 +258,11 @@ class Command(BaseCommand):
         result_type: str,
     ) -> None:
         if not isinstance(result, dict):
-            raise CommandError(
-                f"Each {result_type} result must be a JSON object."
-            )
+            raise CommandError(f"Each {result_type} result must be a JSON object.")
 
         missing = sorted(required - result.keys())
 
         if missing:
             raise CommandError(
-                f"Missing {result_type} result fields: "
-                + ", ".join(missing)
+                f"Missing {result_type} result fields: " + ", ".join(missing)
             )

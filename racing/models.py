@@ -17,8 +17,12 @@ class Constructor(models.Model):
 
 
 class Racecar(models.Model):
-    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="racecars")
-    constructor = models.ForeignKey(Constructor, on_delete=models.CASCADE, related_name="racecars")
+    season = models.ForeignKey(
+        Season, on_delete=models.CASCADE, related_name="racecars"
+    )
+    constructor = models.ForeignKey(
+        Constructor, on_delete=models.CASCADE, related_name="racecars"
+    )
     chassis = models.CharField(max_length=100)
     engine = models.CharField(max_length=100)
 
@@ -45,8 +49,12 @@ class Driver(models.Model):
 
 
 class DriverEntry(models.Model):
-    racecar = models.ForeignKey(Racecar, on_delete=models.CASCADE, related_name="driver_entries")
-    driver = models.ForeignKey(Driver, on_delete=models.CASCADE, related_name="season_entries")
+    racecar = models.ForeignKey(
+        Racecar, on_delete=models.CASCADE, related_name="driver_entries"
+    )
+    driver = models.ForeignKey(
+        Driver, on_delete=models.CASCADE, related_name="season_entries"
+    )
 
     def __str__(self):
         return f"{self.driver} - {self.racecar}"
@@ -62,18 +70,10 @@ class Circuit(models.Model):
 
 
 class Race(models.Model):
-    season = models.ForeignKey(
-        Season, 
-        on_delete=models.CASCADE, 
-        related_name="races"
-    )
+    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="races")
     round_number = models.PositiveIntegerField()
     name = models.CharField(max_length=150)
-    circuit = models.ForeignKey(
-        Circuit, 
-        on_delete=models.CASCADE, 
-        related_name="races"
-    )
+    circuit = models.ForeignKey(Circuit, on_delete=models.CASCADE, related_name="races")
     race_date = models.DateField()
 
     class Meta:
@@ -83,14 +83,14 @@ class Race(models.Model):
                 name="unique_round_per_season",
             ),
             models.UniqueConstraint(
-                fields=["season", "name"],
-                name="unique_race_name_per_season"
-            )
+                fields=["season", "name"], name="unique_race_name_per_season"
+            ),
         ]
         ordering = ["season", "round_number"]
 
     def __str__(self):
         return f"{self.season.year} {self.name}"
+
 
 class QualifyingResult(models.Model):
     race = models.ForeignKey(
@@ -124,10 +124,7 @@ class QualifyingResult(models.Model):
         ordering = ["position"]
 
     def __str__(self):
-        return (
-            f"{self.race} qualifying - "
-            f"{self.driver_entry.driver}"
-        )
+        return f"{self.race} qualifying - {self.driver_entry.driver}"
 
 
 class RaceResult(models.Model):
@@ -176,8 +173,4 @@ class RaceResult(models.Model):
         ordering = ["finishing_position"]
 
     def __str__(self):
-        return (
-            f"{self.race} result - "
-            f"{self.driver_entry.driver}"
-        )
-
+        return f"{self.race} result - {self.driver_entry.driver}"

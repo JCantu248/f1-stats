@@ -26,9 +26,7 @@ class RaceApiTests(TestCase):
         )
 
     def test_race_list_returns_race(self):
-        response = self.client.get(
-            reverse("racing:race-list")
-        )
+        response = self.client.get(reverse("racing:race-list"))
 
         self.assertEqual(response.status_code, 200)
 
@@ -69,9 +67,7 @@ class DriverApiTests(TestCase):
         )
 
     def test_driver_list_returns_driver(self):
-        response = self.client.get(
-            reverse("racing:driver-list")
-        )
+        response = self.client.get(reverse("racing:driver-list"))
 
         self.assertEqual(response.status_code, 200)
 
