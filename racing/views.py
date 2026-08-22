@@ -7,8 +7,9 @@ from racing.models import Constructor, Driver, DriverEntry, Race
 
 @require_GET
 def race_list(request):
-    races = Race.objects.select_related("season", "circuit").order_by(
-        "season__year", "round_number"
+    races = (
+        Race.objects.select_related("season", "circuit")
+        .order_by("season__year", "race_date")
     )
 
     data = [
@@ -18,6 +19,8 @@ def race_list(request):
             "round_number": race.round_number,
             "name": race.name,
             "race_date": race.race_date.isoformat(),
+            "status": race.status,
+            "status_note": race.status_note,
             "circuit": {
                 "name": race.circuit.name,
                 "city": race.circuit.city,
@@ -43,15 +46,19 @@ def race_detail(request, race_id):
         id=race_id,
     )
 
-    qualifying_results = race.qualifying_results.select_related(
-        "driver_entry__driver",
-        "driver_entry__racecar__constructor",
-    ).order_by("position")
+    qualifying_results = (
+        race.qualifying_results.select_related(
+            "driver_entry__driver",
+            "driver_entry__racecar__constructor",
+        ).order_by("position")
+    )
 
-    race_results = race.race_results.select_related(
-        "driver_entry__driver",
-        "driver_entry__racecar__constructor",
-    ).order_by("finishing_position", "-laps_completed")
+    race_results = (
+        race.race_results.select_related(
+            "driver_entry__driver",
+            "driver_entry__racecar__constructor",
+        ).order_by("finishing_position", "-laps_completed")
+    )
 
     qualifying_data = [
         {
@@ -60,7 +67,7 @@ def race_detail(request, race_id):
                 "number": result.driver_entry.driver.permanent_number,
                 "name": str(result.driver_entry.driver),
             },
-            "constructor": (result.driver_entry.racecar.constructor.name),
+            "constructor": result.driver_entry.racecar.constructor.name,
             "q1_time": result.q1_time,
             "q2_time": result.q2_time,
             "q3_time": result.q3_time,
@@ -77,7 +84,7 @@ def race_detail(request, race_id):
                 "number": result.driver_entry.driver.permanent_number,
                 "name": str(result.driver_entry.driver),
             },
-            "constructor": (result.driver_entry.racecar.constructor.name),
+            "constructor": result.driver_entry.racecar.constructor.name,
             "laps_completed": result.laps_completed,
             "total_time": result.total_time,
             "fastest_lap_time": result.fastest_lap_time,
@@ -95,6 +102,8 @@ def race_detail(request, race_id):
             "round_number": race.round_number,
             "name": race.name,
             "race_date": race.race_date.isoformat(),
+            "status": race.status,
+            "status_note": race.status_note,
             "circuit": {
                 "name": race.circuit.name,
                 "city": race.circuit.city,
@@ -157,7 +166,9 @@ def constructor_detail(request, constructor_id):
                 "id": entry.driver.id,
                 "number": entry.driver.permanent_number,
                 "name": str(entry.driver),
-                "detail_url": (f"/api/drivers/{entry.driver.permanent_number}/"),
+                "detail_url": (
+                    f"/api/drivers/{entry.driver.permanent_number}/"
+                ),
             },
         }
         for entry in driver_entries
@@ -183,7 +194,7 @@ def driver_list(request):
             "number": driver.permanent_number,
             "name": str(driver),
             "nationality": driver.nationality,
-            "detail_url": (f"/api/drivers/{driver.permanent_number}/"),
+            "detail_url": f"/api/drivers/{driver.permanent_number}/",
         }
         for driver in drivers
     ]
@@ -219,7 +230,9 @@ def driver_detail(request, driver_number):
             "constructor": {
                 "id": entry.racecar.constructor.id,
                 "name": entry.racecar.constructor.name,
-                "detail_url": (f"/api/constructors/{entry.racecar.constructor.id}/"),
+                "detail_url": (
+                    f"/api/constructors/{entry.racecar.constructor.id}/"
+                ),
             },
             "racecar": str(entry.racecar),
         }

@@ -1,5 +1,4 @@
 import json
-from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -7,7 +6,6 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from racing.models import (
-    Circuit,
     DriverEntry,
     QualifyingResult,
     Race,
@@ -17,7 +15,7 @@ from racing.models import (
 
 
 class Command(BaseCommand):
-    help = "Creates or updates one race and its qualifying and race results."
+    help = "Imports qualifying and race results for an existing seeded race."
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -37,8 +35,11 @@ class Command(BaseCommand):
         self._validate_document(data)
 
         season = self._get_season(data["season"])
-        circuit = self._upsert_circuit(data["circuit"])
-        race = self._upsert_race(data, season, circuit)
+        race = self._get_race(
+            season=season,
+            round_number=data["round_number"],
+        )
+        self._validate_race_identity(race, data)
 
         qualifying_count = self._upsert_qualifying_results(
             race=race,
@@ -46,11 +47,17 @@ class Command(BaseCommand):
             results=data.get("qualifying_results", []),
         )
 
+        race_results = data.get("race_results", [])
         race_result_count = self._upsert_race_results(
             race=race,
             season=season,
-            results=data.get("race_results", []),
+            results=race_results,
         )
+
+        if race_results:
+            race.status = Race.Status.COMPLETED
+            race.status_note = ""
+            race.save(update_fields=["status", "status_note"])
 
         self.stdout.write(
             self.style.SUCCESS(
@@ -75,30 +82,12 @@ class Command(BaseCommand):
         return data
 
     def _validate_document(self, data: dict[str, Any]) -> None:
-        required_fields = {
-            "season",
-            "round_number",
-            "name",
-            "race_date",
-            "circuit",
-        }
-
+        required_fields = {"season", "round_number"}
         missing = sorted(required_fields - data.keys())
 
         if missing:
             raise CommandError(
                 f"Missing required top-level fields: {', '.join(missing)}"
-            )
-
-        if not isinstance(data["circuit"], dict):
-            raise CommandError("'circuit' must be a JSON object.")
-
-        circuit_required = {"name", "city", "country"}
-        missing_circuit = sorted(circuit_required - data["circuit"].keys())
-
-        if missing_circuit:
-            raise CommandError(
-                "Missing required circuit fields: " + ", ".join(missing_circuit)
             )
 
         for key in ("qualifying_results", "race_results"):
@@ -115,37 +104,35 @@ class Command(BaseCommand):
                 f"Season {year} does not exist. Run seed_season first."
             ) from exc
 
-    def _upsert_circuit(self, circuit_data: dict[str, Any]) -> Circuit:
-        circuit, _ = Circuit.objects.update_or_create(
-            name=circuit_data["name"],
-            defaults={
-                "city": circuit_data["city"],
-                "country": circuit_data["country"],
-            },
-        )
-        return circuit
-
-    def _upsert_race(
+    def _get_race(
         self,
-        data: dict[str, Any],
         season: Season,
-        circuit: Circuit,
+        round_number: int,
     ) -> Race:
         try:
-            race_date = date.fromisoformat(data["race_date"])
-        except (TypeError, ValueError) as exc:
-            raise CommandError("'race_date' must use YYYY-MM-DD format.") from exc
+            return Race.objects.select_related("circuit").get(
+                season=season,
+                round_number=round_number,
+            )
+        except Race.DoesNotExist as exc:
+            raise CommandError(
+                f"Round {round_number} for season {season.year} does not "
+                "exist. Run seed_season first."
+            ) from exc
 
-        race, _ = Race.objects.update_or_create(
-            season=season,
-            round_number=data["round_number"],
-            defaults={
-                "name": data["name"],
-                "circuit": circuit,
-                "race_date": race_date,
-            },
-        )
-        return race
+    def _validate_race_identity(
+        self,
+        race: Race,
+        data: dict[str, Any],
+    ) -> None:
+        supplied_name = data.get("name")
+
+        if supplied_name and supplied_name != race.name:
+            raise CommandError(
+                f"Race file says '{supplied_name}', but season "
+                f"{race.season.year} round {race.round_number} is "
+                f"'{race.name}'."
+            )
 
     def _get_driver_entry(
         self,
@@ -233,18 +220,12 @@ class Command(BaseCommand):
                 defaults={
                     "grid_position": result.get("grid_position"),
                     "finishing_position": result.get("finishing_position"),
-                    "laps_completed": result.get(
-                        "laps_completed",
-                        0,
-                    ),
+                    "laps_completed": result.get("laps_completed", 0),
                     "total_time": result.get("total_time"),
                     "fastest_lap_time": result.get("fastest_lap_time"),
                     "fastest_lap_number": result.get("fastest_lap_number"),
                     "points": result.get("points", 0),
-                    "status": result.get(
-                        "status",
-                        "Classified",
-                    ),
+                    "status": result.get("status", "Classified"),
                 },
             )
             count += 1
@@ -258,7 +239,9 @@ class Command(BaseCommand):
         result_type: str,
     ) -> None:
         if not isinstance(result, dict):
-            raise CommandError(f"Each {result_type} result must be a JSON object.")
+            raise CommandError(
+                f"Each {result_type} result must be a JSON object."
+            )
 
         missing = sorted(required - result.keys())
 

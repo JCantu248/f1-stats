@@ -70,12 +70,22 @@ class Circuit(models.Model):
 
 
 class Race(models.Model):
+    class Status(models.TextChoices):
+        SCHEDULED = "scheduled", "Scheduled"
+        COMPLETED = "completed", "Completed"
+        CANCELLED = "cancelled", "Cancelled"
+        RELOCATED = "relocated", "Relocated"
     season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="races")
     round_number = models.PositiveIntegerField()
     name = models.CharField(max_length=150)
     circuit = models.ForeignKey(Circuit, on_delete=models.CASCADE, related_name="races")
     race_date = models.DateField()
-
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.SCHEDULED,
+    )
+    status_note = models.CharField(max_length=255, blank=True, default="")
     class Meta:
         constraints = [
             models.UniqueConstraint(

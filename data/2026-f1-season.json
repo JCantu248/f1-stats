@@ -1,247 +1,504 @@
 {
-    "season": "2026",
-    "constructors": [
+  "season": 2026,
+  "constructors": [
+    {
+      "name": "BWT Alpine F1 Team",
+      "nation": "France",
+      "racecar": {
+        "chassis": "AMR26",
+        "engine": "Mercedes-AMG F1 M17"
+      },
+      "drivers": [
         {
-            "name": "BWT Alpine F1 Team",
-            "nation": "France",
-            "racecar": {
-              "chassis": "AMR26",
-              "engine": "Mercedes-AMG F1 M17"
-            },
-            "drivers": [
-              {
-                "first_name": "Pierre",
-                "last_name": "Gasly",
-                "nationality": "French",
-                "permanent_number": 10
-              },
-              {
-                "first_name": "Franco",
-                "last_name": "Colapinto",
-                "nationality": "Argentinian",
-                "permanent_number": 43
-              }
-            ]
-          },
-          {
-            "name": "Aston Martin Aramco F1 Team",
-            "nation": "United Kingdom",
-            "racecar": {
-              "chassis": "AMR26",
-              "engine": "Honda RAH626H"
-            },
-            "drivers": [
-              {
-                "first_name": "Fernando",
-                "last_name": "Alonso",
-                "nationality": "Spanish",
-                "permanent_number": 14
-              },
-              {
-                "first_name": "Lance",
-                "last_name": "Stroll",
-                "nationality": "Canadian",
-                "permanent_number": 18
-              }
-            ]
-          },
-          {
-            "name": "Atlassian Williams F1 Team",
-            "nation": "United Kingdom",
-            "racecar": {
-              "chassis": "FW48",
-              "engine": "Mercedes-AMG F1 M17"
-            },
-            "drivers": [
-              {
-                "first_name": "Alexander",
-                "last_name": "Albon",
-                "nationality": "Thai",
-                "permanent_number": 23
-              },
-              {
-                "first_name": "Carlos",
-                "last_name": "Sainz, Jr.",
-                "nationality": "Spanish",
-                "permanent_number": 55
-              }
-            ]
-          },
-          {
-            "name": "Audi Revolut F1 Team",
-            "nation": "Germany  ",
-            "racecar": {
-              "chassis": "R26",
-              "engine": "Audi AFR 26 Hybrid"
-            },
-            "drivers": [
-              {
-                "first_name": "Gabriel",
-                "last_name": "Bartoleto",
-                "nationality": "Brazilian",
-                "permanent_number": 5
-              },
-              {
-                "first_name": "Nico",
-                "last_name": "Hulkenberg",
-                "nationality": "German",
-                "permanent_number": 27
-              }
-            ]
-          },
-          {
-            "name": "Cadillac Formula 1 Team",
-            "nation": "United States of America",
-            "racecar": {
-              "chassis": "MAC-26",
-              "engine": "Ferrari 067/6"
-            },
-            "drivers": [
-              {
-                "first_name": "Sergio",
-                "last_name": "Perez",
-                "nationality": "Mexican",
-                "permanent_number": 11
-              },
-              {
-                "first_name": "Valterri",
-                "last_name": "Bottas",
-                "nationality": "Finnish",
-                "permanent_number": 77
-              }
-            ]
-          },
-          {
-            "name": "Scuderia Ferrari HP",
-            "nation": "Italy",
-            "racecar": {
-              "chassis": "SF-26",
-              "engine": "Ferrari 067/6"
-            },
-            "drivers": [
-              {
-                "first_name": "Charles",
-                "last_name": "Leclerc",
-                "nationality": "Monegasque",
-                "permanent_number": 16
-              },
-              {
-                "first_name": "Lewis",
-                "last_name": "Hamilton",
-                "nationality": "British",
-                "permanent_number": 44
-              }
-            ]
-          },
-          {
-            "name": "TGR Haas F1 Team",
-            "nation": "United States of America",
-            "racecar": {
-              "chassis": "VF-26",
-              "engine": "Ferrari 067/6"
-            },
-            "drivers": [
-              {
-                "first_name": "Esteban",
-                "last_name": "Ocon",
-                "nationality": "French",
-                "permanent_number": 31
-              },
-              {
-                "first_name": "Oliver",
-                "last_name": "Bearman",
-                "nationality": "British",
-                "permanent_number": 87
-              }
-            ]
-          },
-          {
-            "name": "McLaren Mastercard F1 Team",
-            "nation": "United Kingdom",
-            "racecar": {
-              "chassis": "MCL40",
-              "engine": "Mercedes-AMG F1 M17"
-            },
-            "drivers": [
-              {
-                "first_name": "Lando",
-                "last_name": "Norris",
-                "nationality": "British",
-                "permanent_number": 1
-              },
-              {
-                "first_name": "Oscar",
-                "last_name": "Piastri",
-                "nationality": "Australian",
-                "permanent_number": 81
-              }
-            ]
+          "first_name": "Pierre",
+          "last_name": "Gasly",
+          "nationality": "French",
+          "permanent_number": 10
         },
         {
-            "name": "Mercedes-AMG Petronas F1 Team",
-            "nation": "Germany",
-            "racecar": {
-              "chassis": "F1 W17",
-              "engine": "Mercedes-AMG F1 M17"
-            },
-            "drivers": [
-              {
-                "first_name": "Kimi",
-                "last_name": "Antonelli",
-                "nationality": "Italy",
-                "permanent_number": 12
-              },
-              {
-                "first_name": "George",
-                "last_name": "Russell",
-                "nationality": "British",
-                "permanent_number": 63
-              }
-            ]
-        },
-        {
-            "name": "Visa Cash App Racing Bulls F1 Team",
-            "nation": "Italy",
-            "racecar": {
-              "chassis": "VCARB 03",
-              "engine": "Red Bull Ford DM01"
-            },
-            "drivers": [
-              {
-                "first_name": "Liam",
-                "last_name": "Lawson",
-                "nationality": "Australian",
-                "permanent_number": 30
-              },
-              {
-                "first_name": "Arvid",
-                "last_name": "Lindblad",
-                "nationality": "British",
-                "permanent_number": 41
-              }
-            ]
-        },
-        {
-            "name": "Oracle Red Bull Racing",
-            "nation": "Austria",
-            "racecar": {
-              "chassis": "RB22",
-              "engine": "Red Bull Ford DM01"
-            },
-            "drivers": [
-              {
-                "first_name": "Max",
-                "last_name": "Verstappen",
-                "nationality": "Dutch",
-                "permanent_number": 3
-              },
-              {
-                "first_name": "Isack",
-                "last_name": "Hadjar",
-                "nationality": "French",
-                "permanent_number": 6
-              }
-            ]
+          "first_name": "Franco",
+          "last_name": "Colapinto",
+          "nationality": "Argentinian",
+          "permanent_number": 43
         }
-    ]
+      ]
+    },
+    {
+      "name": "Aston Martin Aramco F1 Team",
+      "nation": "United Kingdom",
+      "racecar": {
+        "chassis": "AMR26",
+        "engine": "Honda RAH626H"
+      },
+      "drivers": [
+        {
+          "first_name": "Fernando",
+          "last_name": "Alonso",
+          "nationality": "Spanish",
+          "permanent_number": 14
+        },
+        {
+          "first_name": "Lance",
+          "last_name": "Stroll",
+          "nationality": "Canadian",
+          "permanent_number": 18
+        }
+      ]
+    },
+    {
+      "name": "Atlassian Williams F1 Team",
+      "nation": "United Kingdom",
+      "racecar": {
+        "chassis": "FW48",
+        "engine": "Mercedes-AMG F1 M17"
+      },
+      "drivers": [
+        {
+          "first_name": "Alexander",
+          "last_name": "Albon",
+          "nationality": "Thai",
+          "permanent_number": 23
+        },
+        {
+          "first_name": "Carlos",
+          "last_name": "Sainz, Jr.",
+          "nationality": "Spanish",
+          "permanent_number": 55
+        }
+      ]
+    },
+    {
+      "name": "Audi Revolut F1 Team",
+      "nation": "Germany  ",
+      "racecar": {
+        "chassis": "R26",
+        "engine": "Audi AFR 26 Hybrid"
+      },
+      "drivers": [
+        {
+          "first_name": "Gabriel",
+          "last_name": "Bartoleto",
+          "nationality": "Brazilian",
+          "permanent_number": 5
+        },
+        {
+          "first_name": "Nico",
+          "last_name": "Hulkenberg",
+          "nationality": "German",
+          "permanent_number": 27
+        }
+      ]
+    },
+    {
+      "name": "Cadillac Formula 1 Team",
+      "nation": "United States of America",
+      "racecar": {
+        "chassis": "MAC-26",
+        "engine": "Ferrari 067/6"
+      },
+      "drivers": [
+        {
+          "first_name": "Sergio",
+          "last_name": "Perez",
+          "nationality": "Mexican",
+          "permanent_number": 11
+        },
+        {
+          "first_name": "Valterri",
+          "last_name": "Bottas",
+          "nationality": "Finnish",
+          "permanent_number": 77
+        }
+      ]
+    },
+    {
+      "name": "Scuderia Ferrari HP",
+      "nation": "Italy",
+      "racecar": {
+        "chassis": "SF-26",
+        "engine": "Ferrari 067/6"
+      },
+      "drivers": [
+        {
+          "first_name": "Charles",
+          "last_name": "Leclerc",
+          "nationality": "Monegasque",
+          "permanent_number": 16
+        },
+        {
+          "first_name": "Lewis",
+          "last_name": "Hamilton",
+          "nationality": "British",
+          "permanent_number": 44
+        }
+      ]
+    },
+    {
+      "name": "TGR Haas F1 Team",
+      "nation": "United States of America",
+      "racecar": {
+        "chassis": "VF-26",
+        "engine": "Ferrari 067/6"
+      },
+      "drivers": [
+        {
+          "first_name": "Esteban",
+          "last_name": "Ocon",
+          "nationality": "French",
+          "permanent_number": 31
+        },
+        {
+          "first_name": "Oliver",
+          "last_name": "Bearman",
+          "nationality": "British",
+          "permanent_number": 87
+        }
+      ]
+    },
+    {
+      "name": "McLaren Mastercard F1 Team",
+      "nation": "United Kingdom",
+      "racecar": {
+        "chassis": "MCL40",
+        "engine": "Mercedes-AMG F1 M17"
+      },
+      "drivers": [
+        {
+          "first_name": "Lando",
+          "last_name": "Norris",
+          "nationality": "British",
+          "permanent_number": 1
+        },
+        {
+          "first_name": "Oscar",
+          "last_name": "Piastri",
+          "nationality": "Australian",
+          "permanent_number": 81
+        }
+      ]
+    },
+    {
+      "name": "Mercedes-AMG Petronas F1 Team",
+      "nation": "Germany",
+      "racecar": {
+        "chassis": "F1 W17",
+        "engine": "Mercedes-AMG F1 M17"
+      },
+      "drivers": [
+        {
+          "first_name": "Kimi",
+          "last_name": "Antonelli",
+          "nationality": "Italy",
+          "permanent_number": 12
+        },
+        {
+          "first_name": "George",
+          "last_name": "Russell",
+          "nationality": "British",
+          "permanent_number": 63
+        }
+      ]
+    },
+    {
+      "name": "Visa Cash App Racing Bulls F1 Team",
+      "nation": "Italy",
+      "racecar": {
+        "chassis": "VCARB 03",
+        "engine": "Red Bull Ford DM01"
+      },
+      "drivers": [
+        {
+          "first_name": "Liam",
+          "last_name": "Lawson",
+          "nationality": "Australian",
+          "permanent_number": 30
+        },
+        {
+          "first_name": "Arvid",
+          "last_name": "Lindblad",
+          "nationality": "British",
+          "permanent_number": 41
+        }
+      ]
+    },
+    {
+      "name": "Oracle Red Bull Racing",
+      "nation": "Austria",
+      "racecar": {
+        "chassis": "RB22",
+        "engine": "Red Bull Ford DM01"
+      },
+      "drivers": [
+        {
+          "first_name": "Max",
+          "last_name": "Verstappen",
+          "nationality": "Dutch",
+          "permanent_number": 3
+        },
+        {
+          "first_name": "Isack",
+          "last_name": "Hadjar",
+          "nationality": "French",
+          "permanent_number": 6
+        }
+      ]
+    }
+  ],
+  "races": [
+    {
+      "round_number": 1,
+      "name": "Australian Grand Prix",
+      "race_date": "2026-03-08",
+      "circuit": {
+        "name": "Albert Park Grand Prix Circuit",
+        "city": "Melbourne",
+        "country": "Australia"
+      }
+    },
+    {
+      "round_number": 2,
+      "name": "Chinese Grand Prix",
+      "race_date": "2026-03-15",
+      "circuit": {
+        "name": "Shanghai International Circuit",
+        "city": "Shanghai",
+        "country": "China"
+      }
+    },
+    {
+      "round_number": 3,
+      "name": "Japanese Grand Prix",
+      "race_date": "2026-03-29",
+      "circuit": {
+        "name": "Suzuka International Racing Course",
+        "city": "Suzuka",
+        "country": "Japan"
+      }
+    },
+    {
+      "round_number": 4,
+      "name": "Bahrain Grand Prix",
+      "race_date": "2026-04-12",
+      "status": "relocated",
+      "status_note": "The April event at Sakhir did not take place amid the Middle East situation; the Bahrain Grand Prix was later scheduled at Sepang on October 4.",
+      "circuit": {
+        "name": "Bahrain International Circuit",
+        "city": "Sakhir",
+        "country": "Bahrain"
+      }
+    },
+    {
+      "round_number": 5,
+      "name": "Saudi Arabian Grand Prix",
+      "race_date": "2026-04-19",
+      "status": "cancelled",
+      "status_note": "The April event was called off amid the ongoing situation in the Middle East.",
+      "circuit": {
+        "name": "Jeddah Corniche Circuit",
+        "city": "Jeddah",
+        "country": "Saudi Arabia"
+      }
+    },
+    {
+      "round_number":  6,
+      "name": "Miami Grand Prix",
+      "race_date": "2026-05-03",
+      "circuit": {
+        "name": "Miami International Autodrome",
+        "city": "Miami",
+        "country": "United States"
+      }
+    },
+    {
+      "round_number": 7,
+      "name": "Canadian Grand Prix",
+      "race_date": "2026-05-24",
+      "circuit": {
+        "name": "Circuit Gilles Villeneuve",
+        "city": "Montreal",
+        "country": "Canada"
+      }
+    },
+    {
+      "round_number": 8,
+      "name": "Monaco Grand Prix",
+      "race_date": "2026-06-07",
+      "circuit": {
+        "name": "Circuit de Monaco",
+        "city": "Monaco",
+        "country": "Monaco"
+      }
+    },
+    {
+      "round_number": 9,
+      "name": "Barcelona-Catalunya Grand Prix",
+      "race_date": "2026-06-14",
+      "circuit": {
+        "name": "Circuit de Barcelona-Catalunya",
+        "city": "Montmelo",
+        "country": "Spain"
+      }
+    },
+    {
+      "round_number": 10,
+      "name": "Austrian Grand Prix",
+      "race_date": "2026-06-28",
+      "circuit": {
+        "name": "Red Bull Ring",
+        "city": "Spielberg",
+        "country": "Austria"
+      }
+    },
+    {
+      "round_number": 11,
+      "name": "British Grand Prix",
+      "race_date": "2026-07-05",
+      "circuit": {
+        "name": "Silverstone Circuit",
+        "city": "Silverstone",
+        "country": "United Kingdom"
+      }
+    },
+    {
+      "round_number": 12,
+      "name": "Belgian Grand Prix",
+      "race_date": "2026-07-19",
+      "circuit": {
+        "name": "Circuit de Spa-Francorchamps",
+        "city": "Stavelot",
+        "country": "Belgium"
+      }
+    },
+    {
+      "round_number": 13,
+      "name": "Hungarian Grand Prix",
+      "race_date": "2026-07-26",
+      "circuit": {
+        "name": "Hungaroring",
+        "city": "Mogyorod",
+        "country": "Hungary"
+      }
+    },
+    {
+      "round_number": 14,
+      "name": "Dutch Grand Prix",
+      "race_date": "2026-08-23",
+      "circuit": {
+        "name": "Circuit Zandvoort",
+        "city": "Zandvoort",
+        "country": "Netherlands"
+      }
+    },
+    {
+      "round_number": 15,
+      "name": "Italian Grand Prix",
+      "race_date": "2026-09-06",
+      "circuit": {
+        "name": "Autodromo Nazionale Monza",
+        "city": "Monza",
+        "country": "Italy"
+      }
+    },
+    {
+      "round_number": 16,
+      "name": "Spanish Grand Prix",
+      "race_date": "2026-09-13",
+      "circuit": {
+        "name": "Madring",
+        "city": "Madrid",
+        "country": "Spain"
+      }
+    },
+    {
+      "round_number": 17,
+      "name": "Azerbaijan Grand Prix",
+      "race_date": "2026-09-26",
+      "circuit": {
+        "name": "Baku City Circuit",
+        "city": "Baku",
+        "country": "Azerbaijan"
+      }
+    },
+    {
+      "round_number": 18,
+      "name": "Bahrain Grand Prix in Malaysia",
+      "race_date": "2026-10-04",
+      "status_note": "Sepang is hosting the 2026 Bahrain Grand Prix following the cancellation of the originally scheduled April event at Sakhir.",
+      "circuit": {
+        "name": "Sepang International Circuit",
+        "city": "Sepang",
+        "country": "Malaysia"
+      }
+    },
+    {
+      "round_number": 19,
+      "name": "Singapore Grand Prix",
+      "race_date": "2026-10-11",
+      "circuit": {
+        "name": "Marina Bay Street Circuit",
+        "city": "Singapore",
+        "country": "Singapore"
+      }
+    },
+    {
+      "round_number": 20,
+      "name": "United States Grand Prix",
+      "race_date": "2026-10-25",
+      "circuit": {
+        "name": "Circuit of the Americas",
+        "city": "Austin",
+        "country": "United States"
+      }
+    },
+    {
+      "round_number": 21,
+      "name": "Mexico City Grand Prix",
+      "race_date": "2026-11-01",
+      "circuit": {
+        "name": "Autodromo Hermanos Rodriguez",
+        "city": "Mexico City",
+        "country": "Mexico"
+      }
+    },
+    {
+      "round_number": 22,
+      "name": "Sao Paulo Grand Prix",
+      "race_date": "2026-11-08",
+      "circuit": {
+        "name": "Autodromo Jose Carlos Pace",
+        "city": "Sao Paulo",
+        "country": "Brazil"
+      }
+    },
+    {
+      "round_number": 23,
+      "name": "Las Vegas Grand Prix",
+      "race_date": "2026-11-21",
+      "circuit": {
+        "name": "Las Vegas Strip Circuit",
+        "city": "Las Vegas",
+        "country": "United States"
+      }
+    },
+    {
+      "round_number": 24,
+      "name": "Qatar Grand Prix",
+      "race_date": "2026-11-29",
+      "circuit": {
+        "name": "Lusail International Circuit",
+        "city": "Lusail",
+        "country": "Qatar"
+      }
+    },
+    {
+      "round_number": 25,
+      "name": "Abu Dhabi Grand Prix",
+      "race_date": "2026-12-06",
+      "circuit": {
+        "name": "Yas Marina Circuit",
+        "city": "Abu Dhabi",
+        "country": "United Arab Emirates"
+      }
+    }
+  ]
 }
