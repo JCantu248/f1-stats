@@ -130,13 +130,9 @@ class Command(BaseCommand):
                 circuit_data = race_data["circuit"]
                 race_date = date.fromisoformat(race_data["race_date"])
             except KeyError as exc:
-                raise CommandError(
-                    f"Missing required race field: {exc}"
-                ) from exc
+                raise CommandError(f"Missing required race field: {exc}") from exc
             except (TypeError, ValueError) as exc:
-                raise CommandError(
-                    "Race dates must use YYYY-MM-DD format."
-                ) from exc
+                raise CommandError("Race dates must use YYYY-MM-DD format.") from exc
 
             status = race_data.get("status", Race.Status.SCHEDULED)
             valid_statuses = {choice.value for choice in Race.Status}

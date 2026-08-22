@@ -75,6 +75,7 @@ class Race(models.Model):
         COMPLETED = "completed", "Completed"
         CANCELLED = "cancelled", "Cancelled"
         RELOCATED = "relocated", "Relocated"
+
     season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="races")
     round_number = models.PositiveIntegerField()
     name = models.CharField(max_length=150)
@@ -86,6 +87,7 @@ class Race(models.Model):
         default=Status.SCHEDULED,
     )
     status_note = models.CharField(max_length=255, blank=True, default="")
+
     class Meta:
         constraints = [
             models.UniqueConstraint(

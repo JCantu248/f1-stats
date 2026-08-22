@@ -239,9 +239,7 @@ class Command(BaseCommand):
         result_type: str,
     ) -> None:
         if not isinstance(result, dict):
-            raise CommandError(
-                f"Each {result_type} result must be a JSON object."
-            )
+            raise CommandError(f"Each {result_type} result must be a JSON object.")
 
         missing = sorted(required - result.keys())
 
