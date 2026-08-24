@@ -1,0 +1,855 @@
+{
+  "season": 2026,
+  "round_number": 7,
+  "name": "Canadian Grand Prix",
+  "race_date": "2026-05-24",
+  "circuit": {
+    "name": "Circuit Gilles Villeneuve",
+    "city": "Montreal",
+    "country": "Canada"
+  },
+  "sprint_qualifying_results": [
+    {
+      "driver_number": 63,
+      "position": 1,
+      "q1_time": "1:14.772",
+      "q2_time": "1:13.026",
+      "q3_time": "1:12.965",
+      "note": null
+    },
+    {
+      "driver_number": 12,
+      "position": 2,
+      "q1_time": "1:14.010",
+      "q2_time": "1:13.551",
+      "q3_time": "1:13.033",
+      "note": null
+    },
+    {
+      "driver_number": 1,
+      "position": 3,
+      "q1_time": "1:14.265",
+      "q2_time": "1:13.957",
+      "q3_time": "1:13.280",
+      "note": null
+    },
+    {
+      "driver_number": 81,
+      "position": 4,
+      "q1_time": "1:14.665",
+      "q2_time": "1:13.858",
+      "q3_time": "1:13.299",
+      "note": null
+    },
+    {
+      "driver_number": 44,
+      "position": 5,
+      "q1_time": "1:13.889",
+      "q2_time": "1:13.465",
+      "q3_time": "1:13.326",
+      "note": null
+    },
+    {
+      "driver_number": 16,
+      "position": 6,
+      "q1_time": "1:15.006",
+      "q2_time": "1:13.554",
+      "q3_time": "1:13.410",
+      "note": null
+    },
+    {
+      "driver_number": 3,
+      "position": 7,
+      "q1_time": "1:14.028",
+      "q2_time": "1:14.412",
+      "q3_time": "1:13.504",
+      "note": null
+    },
+    {
+      "driver_number": 6,
+      "position": 8,
+      "q1_time": "1:14.541",
+      "q2_time": "1:14.239",
+      "q3_time": "1:13.605",
+      "note": null
+    },
+    {
+      "driver_number": 41,
+      "position": 9,
+      "q1_time": "1:14.517",
+      "q2_time": "1:14.140",
+      "q3_time": "1:13.737",
+      "note": null
+    },
+    {
+      "driver_number": 55,
+      "position": 10,
+      "q1_time": "1:15.500",
+      "q2_time": "1:14.547",
+      "q3_time": "1:14.536",
+      "note": null
+    },
+    {
+      "driver_number": 27,
+      "position": 11,
+      "q1_time": "1:15.673",
+      "q2_time": "1:14.595",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 5,
+      "position": 12,
+      "q1_time": "1:15.801",
+      "q2_time": "1:14.627",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 43,
+      "position": 13,
+      "q1_time": "1:15.484",
+      "q2_time": "1:14.702",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 31,
+      "position": 14,
+      "q1_time": "1:15.760",
+      "q2_time": "1:14.928",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 87,
+      "position": 15,
+      "q1_time": "1:15.872",
+      "q2_time": "1:15.197",
+      "q3_time": null,
+      "note": "Pit lane start"
+    },
+    {
+      "driver_number": 14,
+      "position": 16,
+      "q1_time": "1:15.760",
+      "q2_time": null,
+      "q3_time": null,
+      "note": "No time in SQ2; started 15th"
+    },
+    {
+      "driver_number": 11,
+      "position": 17,
+      "q1_time": "1:16.002",
+      "q2_time": null,
+      "q3_time": null,
+      "note": "Started 16th"
+    },
+    {
+      "driver_number": 18,
+      "position": 18,
+      "q1_time": "1:16.354",
+      "q2_time": null,
+      "q3_time": null,
+      "note": "Started 17th"
+    },
+    {
+      "driver_number": 10,
+      "position": 19,
+      "q1_time": "1:16.642",
+      "q2_time": null,
+      "q3_time": null,
+      "note": "Pit lane start"
+    },
+    {
+      "driver_number": 77,
+      "position": 20,
+      "q1_time": "1:16.866",
+      "q2_time": null,
+      "q3_time": null,
+      "note": "Pit lane start"
+    },
+    {
+      "driver_number": 23,
+      "position": null,
+      "q1_time": null,
+      "q2_time": null,
+      "q3_time": null,
+      "note": "No time; pit lane start"
+    },
+    {
+      "driver_number": 30,
+      "position": null,
+      "q1_time": null,
+      "q2_time": null,
+      "q3_time": null,
+      "note": "No time; started 18th"
+    }
+  ],
+  "sprint_results": [
+    {
+      "driver_number": 63,
+      "grid_position": 1,
+      "finishing_position": 1,
+      "laps_completed": 23,
+      "total_time": "28:50.951",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 8,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 1,
+      "grid_position": 3,
+      "finishing_position": 2,
+      "laps_completed": 23,
+      "total_time": "+1.272",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 7,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 12,
+      "grid_position": 2,
+      "finishing_position": 3,
+      "laps_completed": 23,
+      "total_time": "+1.843",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 6,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 81,
+      "grid_position": 4,
+      "finishing_position": 4,
+      "laps_completed": 23,
+      "total_time": "+9.797",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 5,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 16,
+      "grid_position": 6,
+      "finishing_position": 5,
+      "laps_completed": 23,
+      "total_time": "+9.929",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 4,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 44,
+      "grid_position": 5,
+      "finishing_position": 6,
+      "laps_completed": 23,
+      "total_time": "+10.545",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 3,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 3,
+      "grid_position": 7,
+      "finishing_position": 7,
+      "laps_completed": 23,
+      "total_time": "+15.935",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 2,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 41,
+      "grid_position": 9,
+      "finishing_position": 8,
+      "laps_completed": 23,
+      "total_time": "+29.710",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 1,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 43,
+      "grid_position": 13,
+      "finishing_position": 9,
+      "laps_completed": 23,
+      "total_time": "+31.621",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 55,
+      "grid_position": 10,
+      "finishing_position": 10,
+      "laps_completed": 23,
+      "total_time": "+36.793",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 30,
+      "grid_position": 18,
+      "finishing_position": 11,
+      "laps_completed": 23,
+      "total_time": "+1:01.344",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 5,
+      "grid_position": 12,
+      "finishing_position": 12,
+      "laps_completed": 23,
+      "total_time": "+1:01.814",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 31,
+      "grid_position": 14,
+      "finishing_position": 13,
+      "laps_completed": 23,
+      "total_time": "+1:04.209",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 11,
+      "grid_position": 16,
+      "finishing_position": 14,
+      "laps_completed": 23,
+      "total_time": "+1:10.402",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 27,
+      "grid_position": 11,
+      "finishing_position": 15,
+      "laps_completed": 23,
+      "total_time": "+1:12.158",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 18,
+      "grid_position": null,
+      "finishing_position": 16,
+      "laps_completed": 22,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 77,
+      "grid_position": null,
+      "finishing_position": 17,
+      "laps_completed": 22,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 87,
+      "grid_position": null,
+      "finishing_position": 18,
+      "laps_completed": 22,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 23,
+      "grid_position": null,
+      "finishing_position": 19,
+      "laps_completed": 22,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 10,
+      "grid_position": null,
+      "finishing_position": 20,
+      "laps_completed": 22,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 6,
+      "grid_position": 8,
+      "finishing_position": 21,
+      "laps_completed": 20,
+      "total_time": "+3 laps",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 14,
+      "grid_position": 15,
+      "finishing_position": null,
+      "laps_completed": 15,
+      "total_time": null,
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Engine"
+    }
+  ],
+  "qualifying_results": [
+    {
+      "driver_number": 63,
+      "position": 1,
+      "q1_time": "1:13.953",
+      "q2_time": "1:13.079",
+      "q3_time": "1:12.578",
+      "note": null
+    },
+    {
+      "driver_number": 12,
+      "position": 2,
+      "q1_time": "1:13.380",
+      "q2_time": "1:13.076",
+      "q3_time": "1:12.646",
+      "note": null
+    },
+    {
+      "driver_number": 1,
+      "position": 3,
+      "q1_time": "1:13.503",
+      "q2_time": "1:13.049",
+      "q3_time": "1:12.729",
+      "note": null
+    },
+    {
+      "driver_number": 81,
+      "position": 4,
+      "q1_time": "1:13.559",
+      "q2_time": "1:13.285",
+      "q3_time": "1:12.781",
+      "note": null
+    },
+    {
+      "driver_number": 44,
+      "position": 5,
+      "q1_time": "1:13.767",
+      "q2_time": "1:13.041",
+      "q3_time": "1:12.868",
+      "note": null
+    },
+    {
+      "driver_number": 3,
+      "position": 6,
+      "q1_time": "1:14.067",
+      "q2_time": "1:13.479",
+      "q3_time": "1:12.907",
+      "note": null
+    },
+    {
+      "driver_number": 6,
+      "position": 7,
+      "q1_time": "1:13.654",
+      "q2_time": "1:12.975",
+      "q3_time": "1:12.935",
+      "note": null
+    },
+    {
+      "driver_number": 16,
+      "position": 8,
+      "q1_time": "1:13.825",
+      "q2_time": "1:13.496",
+      "q3_time": "1:12.976",
+      "note": null
+    },
+    {
+      "driver_number": 41,
+      "position": 9,
+      "q1_time": "1:13.895",
+      "q2_time": "1:13.548",
+      "q3_time": "1:13.280",
+      "note": null
+    },
+    {
+      "driver_number": 43,
+      "position": 10,
+      "q1_time": "1:14.466",
+      "q2_time": "1:13.857",
+      "q3_time": "1:13.697",
+      "note": null
+    },
+    {
+      "driver_number": 27,
+      "position": 11,
+      "q1_time": "1:14.562",
+      "q2_time": "1:13.886",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 30,
+      "position": 12,
+      "q1_time": "1:14.346",
+      "q2_time": "1:13.897",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 5,
+      "position": 13,
+      "q1_time": "1:14.775",
+      "q2_time": "1:14.071",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 10,
+      "position": 14,
+      "q1_time": "1:14.698",
+      "q2_time": "1:14.187",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 55,
+      "position": 15,
+      "q1_time": "1:14.276",
+      "q2_time": "1:14.273",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 87,
+      "position": 16,
+      "q1_time": "1:14.449",
+      "q2_time": "1:14.416",
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 31,
+      "position": 17,
+      "q1_time": "1:14.845",
+      "q2_time": null,
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 23,
+      "position": 18,
+      "q1_time": "1:14.851",
+      "q2_time": null,
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 14,
+      "position": 19,
+      "q1_time": "1:15.196",
+      "q2_time": null,
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 11,
+      "position": 20,
+      "q1_time": "1:15.429",
+      "q2_time": null,
+      "q3_time": null,
+      "note": null
+    },
+    {
+      "driver_number": 18,
+      "position": 21,
+      "q1_time": "1:16.195",
+      "q2_time": null,
+      "q3_time": null,
+      "note": "Pit lane start"
+    },
+    {
+      "driver_number": 77,
+      "position": 22,
+      "q1_time": "1:16.272",
+      "q2_time": null,
+      "q3_time": null,
+      "note": "Started 21st"
+    }
+  ],
+  "race_results": [
+    {
+      "driver_number": 12,
+      "grid_position": 2,
+      "finishing_position": 1,
+      "laps_completed": 68,
+      "total_time": "1:28:15.758",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 25,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 44,
+      "grid_position": 5,
+      "finishing_position": 2,
+      "laps_completed": 68,
+      "total_time": "+10.768",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 18,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 3,
+      "grid_position": 6,
+      "finishing_position": 3,
+      "laps_completed": 68,
+      "total_time": "+11.276",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 15,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 16,
+      "grid_position": 8,
+      "finishing_position": 4,
+      "laps_completed": 68,
+      "total_time": "+44.151",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 12,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 6,
+      "grid_position": 7,
+      "finishing_position": 5,
+      "laps_completed": 67,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 10,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 43,
+      "grid_position": 10,
+      "finishing_position": 6,
+      "laps_completed": 67,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 8,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 30,
+      "grid_position": 12,
+      "finishing_position": 7,
+      "laps_completed": 67,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 6,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 10,
+      "grid_position": 14,
+      "finishing_position": 8,
+      "laps_completed": 67,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 4,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 55,
+      "grid_position": 15,
+      "finishing_position": 9,
+      "laps_completed": 67,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 2,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 87,
+      "grid_position": 16,
+      "finishing_position": 10,
+      "laps_completed": 67,
+      "total_time": "+1 lap",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 1,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 81,
+      "grid_position": 4,
+      "finishing_position": 11,
+      "laps_completed": 66,
+      "total_time": "+2 laps",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 27,
+      "grid_position": 11,
+      "finishing_position": 12,
+      "laps_completed": 66,
+      "total_time": "+2 laps",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 5,
+      "grid_position": 13,
+      "finishing_position": 13,
+      "laps_completed": 66,
+      "total_time": "+2 laps",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 31,
+      "grid_position": 17,
+      "finishing_position": 14,
+      "laps_completed": 66,
+      "total_time": "+2 laps",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 18,
+      "grid_position": null,
+      "finishing_position": 15,
+      "laps_completed": 64,
+      "total_time": "+4 laps",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 77,
+      "grid_position": 21,
+      "finishing_position": 16,
+      "laps_completed": 64,
+      "total_time": "+4 laps",
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Finished"
+    },
+    {
+      "driver_number": 11,
+      "grid_position": 20,
+      "finishing_position": null,
+      "laps_completed": 39,
+      "total_time": null,
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Suspension"
+    },
+    {
+      "driver_number": 1,
+      "grid_position": 3,
+      "finishing_position": null,
+      "laps_completed": 38,
+      "total_time": null,
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Gearbox"
+    },
+    {
+      "driver_number": 63,
+      "grid_position": 1,
+      "finishing_position": null,
+      "laps_completed": 29,
+      "total_time": null,
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Engine"
+    },
+    {
+      "driver_number": 14,
+      "grid_position": 19,
+      "finishing_position": null,
+      "laps_completed": 23,
+      "total_time": null,
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Broken seat"
+    },
+    {
+      "driver_number": 23,
+      "grid_position": 18,
+      "finishing_position": null,
+      "laps_completed": 11,
+      "total_time": null,
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "Collision"
+    },
+    {
+      "driver_number": 41,
+      "grid_position": null,
+      "finishing_position": null,
+      "laps_completed": 0,
+      "total_time": null,
+      "fastest_lap_time": null,
+      "fastest_lap_number": null,
+      "points": 0,
+      "status": "DNS - Gearbox"
+    }
+  ]
+}

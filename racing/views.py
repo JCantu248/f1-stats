@@ -1,8 +1,15 @@
+from django.db.models import F, Sum
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_GET
 
-from racing.models import Constructor, Driver, DriverEntry, Race
+from racing.models import (
+    Constructor,
+    Driver,
+    DriverEntry,
+    Race,
+    RaceResult,
+)
 
 
 @require_GET
@@ -45,15 +52,70 @@ def race_detail(request, race_id):
         id=race_id,
     )
 
+    sprint_qualifying_results = race.sprint_qualifying_results.select_related(
+        "driver_entry__driver",
+        "driver_entry__racecar__constructor",
+    ).order_by(
+        F("position").asc(nulls_last=True),
+    )
+
+    sprint_results = race.sprint_results.select_related(
+        "driver_entry__driver",
+        "driver_entry__racecar__constructor",
+    ).order_by(
+        F("finishing_position").asc(nulls_last=True),
+        "-laps_completed",
+    )
+
     qualifying_results = race.qualifying_results.select_related(
         "driver_entry__driver",
         "driver_entry__racecar__constructor",
-    ).order_by("position")
+    ).order_by(
+        F("position").asc(nulls_last=True),
+    )
 
     race_results = race.race_results.select_related(
         "driver_entry__driver",
         "driver_entry__racecar__constructor",
-    ).order_by("finishing_position", "-laps_completed")
+    ).order_by(
+        F("finishing_position").asc(nulls_last=True),
+        "-laps_completed",
+    )
+
+    sprint_qualifying_data = [
+        {
+            "position": result.position,
+            "driver": {
+                "number": result.driver_entry.driver.permanent_number,
+                "name": str(result.driver_entry.driver),
+            },
+            "constructor": result.driver_entry.racecar.constructor.name,
+            "q1_time": result.q1_time,
+            "q2_time": result.q2_time,
+            "q3_time": result.q3_time,
+            "note": result.note,
+        }
+        for result in sprint_qualifying_results
+    ]
+
+    sprint_data = [
+        {
+            "finishing_position": result.finishing_position,
+            "grid_position": result.grid_position,
+            "driver": {
+                "number": result.driver_entry.driver.permanent_number,
+                "name": str(result.driver_entry.driver),
+            },
+            "constructor": result.driver_entry.racecar.constructor.name,
+            "laps_completed": result.laps_completed,
+            "total_time": result.total_time,
+            "fastest_lap_time": result.fastest_lap_time,
+            "fastest_lap_number": result.fastest_lap_number,
+            "points": float(result.points),
+            "status": result.status,
+        }
+        for result in sprint_results
+    ]
 
     qualifying_data = [
         {
@@ -104,6 +166,8 @@ def race_detail(request, race_id):
                 "city": race.circuit.city,
                 "country": race.circuit.country,
             },
+            "sprint_qualifying_results": sprint_qualifying_data,
+            "sprint_results": sprint_data,
             "qualifying_results": qualifying_data,
             "race_results": race_data,
         }
@@ -149,6 +213,7 @@ def constructor_detail(request, constructor_id):
         )
         .order_by(
             "-racecar__season__year",
+            "start_round",
             "driver__permanent_number",
         )
     )
@@ -163,6 +228,8 @@ def constructor_detail(request, constructor_id):
                 "name": str(entry.driver),
                 "detail_url": (f"/api/drivers/{entry.driver.permanent_number}/"),
             },
+            "start_round": entry.start_round,
+            "end_round": entry.end_round,
         }
         for entry in driver_entries
     ]
@@ -214,7 +281,7 @@ def driver_detail(request, driver_number):
             "racecar__season",
             "racecar__constructor",
         )
-        .order_by("-racecar__season__year")
+        .order_by("-racecar__season__year", "start_round")
     )
 
     entries = [
@@ -226,6 +293,8 @@ def driver_detail(request, driver_number):
                 "detail_url": (f"/api/constructors/{entry.racecar.constructor.id}/"),
             },
             "racecar": str(entry.racecar),
+            "start_round": entry.start_round,
+            "end_round": entry.end_round,
         }
         for entry in season_entries
     ]
@@ -237,5 +306,84 @@ def driver_detail(request, driver_number):
             "name": str(driver),
             "nationality": driver.nationality,
             "entries": entries,
+        }
+    )
+
+
+@require_GET
+def driver_standings(request):
+    standings = (
+        RaceResult.objects.filter(race__season__year=2026)
+        .values(
+            "driver_entry__driver__id",
+            "driver_entry__driver__permanent_number",
+            "driver_entry__driver__first_name",
+            "driver_entry__driver__last_name",
+            "driver_entry__driver__nationality",
+        )
+        .annotate(points=Sum("points"))
+        .order_by("-points", "driver_entry__driver__last_name")
+    )
+
+    results = []
+
+    for position, row in enumerate(standings, start=1):
+        results.append(
+            {
+                "position": position,
+                "driver_id": row["driver_entry__driver__id"],
+                "number": row["driver_entry__driver__permanent_number"],
+                "name": (
+                    f"{row['driver_entry__driver__first_name']} "
+                    f"{row['driver_entry__driver__last_name']}"
+                ),
+                "nationality": row["driver_entry__driver__nationality"],
+                "points": float(row["points"] or 0),
+            }
+        )
+
+    return JsonResponse(
+        {
+            "season": 2026,
+            "count": len(results),
+            "results": results,
+        }
+    )
+
+
+@require_GET
+def constructor_standings(request):
+    standings = (
+        RaceResult.objects.filter(race__season__year=2026)
+        .values(
+            "driver_entry__racecar__constructor__id",
+            "driver_entry__racecar__constructor__name",
+            "driver_entry__racecar__constructor__nation",
+        )
+        .annotate(points=Sum("points"))
+        .order_by(
+            "-points",
+            "driver_entry__racecar__constructor__name",
+        )
+    )
+
+    results = []
+
+    for position, row in enumerate(standings, start=1):
+        results.append(
+            {
+                "position": position,
+                "constructor_id": row["driver_entry__racecar__constructor__id"],
+                "name": row["driver_entry__racecar__constructor__name"],
+                "nation": row["driver_entry__racecar__constructor__nation"],
+                "points": float(row["points"] or 0),
+            }
+        )
+
+    return JsonResponse(
+        {
+            "season": 2026,
+            "count": len(results),
+            "results": results,
         }
     )

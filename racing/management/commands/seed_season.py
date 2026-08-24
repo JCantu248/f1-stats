@@ -87,7 +87,9 @@ class Command(BaseCommand):
             try:
                 constructor, _ = Constructor.objects.update_or_create(
                     name=constructor_data["name"],
-                    defaults={"nation": constructor_data["nation"]},
+                    defaults={
+                        "nation": constructor_data["nation"],
+                    },
                 )
 
                 racecar, _ = Racecar.objects.update_or_create(
@@ -109,10 +111,36 @@ class Command(BaseCommand):
                         },
                     )
 
-                    DriverEntry.objects.get_or_create(
+                    start_round = driver_data.get("start_round", 1)
+                    end_round = driver_data.get("end_round")
+
+                    if not isinstance(start_round, int) or start_round < 1:
+                        raise CommandError(
+                            f"Invalid start_round for {driver}: {start_round!r}"
+                        )
+
+                    if end_round is not None:
+                        if not isinstance(end_round, int) or end_round < 1:
+                            raise CommandError(
+                                f"Invalid end_round for {driver}: {end_round!r}"
+                            )
+
+                        if end_round < start_round:
+                            raise CommandError(
+                                f"Invalid driver stint for {driver}: "
+                                f"end_round {end_round} is before "
+                                f"start_round {start_round}."
+                            )
+
+                    DriverEntry.objects.update_or_create(
                         racecar=racecar,
                         driver=driver,
+                        start_round=start_round,
+                        defaults={
+                            "end_round": end_round,
+                        },
                     )
+
             except KeyError as exc:
                 raise CommandError(
                     f"Missing required constructor/driver field: {exc}"
@@ -134,7 +162,10 @@ class Command(BaseCommand):
             except (TypeError, ValueError) as exc:
                 raise CommandError("Race dates must use YYYY-MM-DD format.") from exc
 
-            status = race_data.get("status", Race.Status.SCHEDULED)
+            status = race_data.get(
+                "status",
+                Race.Status.SCHEDULED,
+            )
             valid_statuses = {choice.value for choice in Race.Status}
 
             if status not in valid_statuses:
@@ -158,9 +189,13 @@ class Command(BaseCommand):
                     "circuit": circuit,
                     "race_date": race_date,
                     "status": status,
-                    "status_note": race_data.get("status_note", ""),
+                    "status_note": race_data.get(
+                        "status_note",
+                        "",
+                    ),
                 },
             )
+
             count += 1
 
         return count

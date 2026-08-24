@@ -23,4 +23,14 @@ urlpatterns = [
         views.driver_detail,
         name="driver-detail",
     ),
+    path(
+        "standings/drivers/",
+        views.driver_standings,
+        name="driver-standings",
+    ),
+    path(
+        "standings/constructors/",
+        views.constructor_standings,
+        name="constructor-standings",
+    ),
 ]

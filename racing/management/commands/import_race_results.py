@@ -4,6 +4,7 @@ from typing import Any
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
+from django.db.models import Q
 
 from racing.models import (
     DriverEntry,
@@ -11,6 +12,8 @@ from racing.models import (
     Race,
     RaceResult,
     Season,
+    SprintQualifyingResult,
+    SprintResult,
 )
 
 
@@ -39,15 +42,38 @@ class Command(BaseCommand):
             season=season,
             round_number=data["round_number"],
         )
+
         self._validate_race_identity(race, data)
+
+        sprint_qualifying_count = self._upsert_sprint_qualifying_results(
+            race=race,
+            season=season,
+            results=data.get(
+                "sprint_qualifying_results",
+                [],
+            ),
+        )
+
+        sprint_result_count = self._upsert_sprint_results(
+            race=race,
+            season=season,
+            results=data.get(
+                "sprint_results",
+                [],
+            ),
+        )
 
         qualifying_count = self._upsert_qualifying_results(
             race=race,
             season=season,
-            results=data.get("qualifying_results", []),
+            results=data.get(
+                "qualifying_results",
+                [],
+            ),
         )
 
         race_results = data.get("race_results", [])
+
         race_result_count = self._upsert_race_results(
             race=race,
             season=season,
@@ -57,22 +83,37 @@ class Command(BaseCommand):
         if race_results:
             race.status = Race.Status.COMPLETED
             race.status_note = ""
-            race.save(update_fields=["status", "status_note"])
+            race.save(
+                update_fields=[
+                    "status",
+                    "status_note",
+                ]
+            )
 
         self.stdout.write(
             self.style.SUCCESS(
                 f"Imported {race}: "
+                f"{sprint_qualifying_count} sprint qualifying results, "
+                f"{sprint_result_count} sprint results, "
                 f"{qualifying_count} qualifying results, "
                 f"{race_result_count} race results."
             )
         )
 
-    def _load_json(self, json_path: Path) -> dict[str, Any]:
+    def _load_json(
+        self,
+        json_path: Path,
+    ) -> dict[str, Any]:
         try:
-            with json_path.open("r", encoding="utf-8") as file:
+            with json_path.open(
+                "r",
+                encoding="utf-8",
+            ) as file:
                 data = json.load(file)
+
         except json.JSONDecodeError as exc:
             raise CommandError(f"Invalid JSON: {exc}") from exc
+
         except OSError as exc:
             raise CommandError(f"Could not read {json_path}: {exc}") from exc
 
@@ -81,24 +122,42 @@ class Command(BaseCommand):
 
         return data
 
-    def _validate_document(self, data: dict[str, Any]) -> None:
-        required_fields = {"season", "round_number"}
+    def _validate_document(
+        self,
+        data: dict[str, Any],
+    ) -> None:
+        required_fields = {
+            "season",
+            "round_number",
+        }
+
         missing = sorted(required_fields - data.keys())
 
         if missing:
             raise CommandError(
-                f"Missing required top-level fields: {', '.join(missing)}"
+                "Missing required top-level fields: " + ", ".join(missing)
             )
 
-        for key in ("qualifying_results", "race_results"):
+        result_arrays = (
+            "qualifying_results",
+            "race_results",
+            "sprint_qualifying_results",
+            "sprint_results",
+        )
+
+        for key in result_arrays:
             value = data.get(key, [])
 
             if not isinstance(value, list):
                 raise CommandError(f"'{key}' must be a JSON array.")
 
-    def _get_season(self, year: int) -> Season:
+    def _get_season(
+        self,
+        year: int,
+    ) -> Season:
         try:
             return Season.objects.get(year=year)
+
         except Season.DoesNotExist as exc:
             raise CommandError(
                 f"Season {year} does not exist. Run seed_season first."
@@ -114,10 +173,12 @@ class Command(BaseCommand):
                 season=season,
                 round_number=round_number,
             )
+
         except Race.DoesNotExist as exc:
             raise CommandError(
-                f"Round {round_number} for season {season.year} does not "
-                "exist. Run seed_season first."
+                f"Round {round_number} for season "
+                f"{season.year} does not exist. "
+                "Run seed_season first."
             ) from exc
 
     def _validate_race_identity(
@@ -129,35 +190,49 @@ class Command(BaseCommand):
 
         if supplied_name and supplied_name != race.name:
             raise CommandError(
-                f"Race file says '{supplied_name}', but season "
-                f"{race.season.year} round {race.round_number} is "
+                f"Race file says '{supplied_name}', "
+                f"but season {race.season.year} "
+                f"round {race.round_number} is "
                 f"'{race.name}'."
             )
 
     def _get_driver_entry(
         self,
         season: Season,
+        race: Race,
         driver_number: int,
     ) -> DriverEntry:
-        try:
-            return DriverEntry.objects.select_related(
+        entries = (
+            DriverEntry.objects.select_related(
                 "driver",
                 "racecar",
                 "racecar__season",
-            ).get(
+            )
+            .filter(
                 racecar__season=season,
                 driver__permanent_number=driver_number,
+                start_round__lte=race.round_number,
             )
-        except DriverEntry.DoesNotExist as exc:
+            .filter(Q(end_round__isnull=True) | Q(end_round__gte=race.round_number))
+        )
+
+        count = entries.count()
+
+        if count == 0:
             raise CommandError(
-                f"No driver entry found for car number "
-                f"{driver_number} in season {season.year}."
-            ) from exc
-        except DriverEntry.MultipleObjectsReturned as exc:
+                f"No active driver entry found for car number "
+                f"{driver_number} in season {season.year}, "
+                f"round {race.round_number}."
+            )
+
+        if count > 1:
             raise CommandError(
-                f"Multiple driver entries found for car number "
-                f"{driver_number} in season {season.year}."
-            ) from exc
+                f"Multiple active driver entries found for "
+                f"car number {driver_number} in season "
+                f"{season.year}, round {race.round_number}."
+            )
+
+        return entries.first()
 
     def _upsert_qualifying_results(
         self,
@@ -176,6 +251,7 @@ class Command(BaseCommand):
 
             driver_entry = self._get_driver_entry(
                 season=season,
+                race=race,
                 driver_number=result["driver_number"],
             )
 
@@ -190,6 +266,44 @@ class Command(BaseCommand):
                     "note": result.get("note"),
                 },
             )
+
+            count += 1
+
+        return count
+
+    def _upsert_sprint_qualifying_results(
+        self,
+        race: Race,
+        season: Season,
+        results: list[dict[str, Any]],
+    ) -> int:
+        count = 0
+
+        for result in results:
+            self._require_result_fields(
+                result,
+                required={"driver_number"},
+                result_type="sprint qualifying",
+            )
+
+            driver_entry = self._get_driver_entry(
+                season=season,
+                race=race,
+                driver_number=result["driver_number"],
+            )
+
+            SprintQualifyingResult.objects.update_or_create(
+                race=race,
+                driver_entry=driver_entry,
+                defaults={
+                    "position": result.get("position"),
+                    "q1_time": result.get("q1_time"),
+                    "q2_time": result.get("q2_time"),
+                    "q3_time": result.get("q3_time"),
+                    "note": result.get("note"),
+                },
+            )
+
             count += 1
 
         return count
@@ -211,6 +325,7 @@ class Command(BaseCommand):
 
             driver_entry = self._get_driver_entry(
                 season=season,
+                race=race,
                 driver_number=result["driver_number"],
             )
 
@@ -220,14 +335,73 @@ class Command(BaseCommand):
                 defaults={
                     "grid_position": result.get("grid_position"),
                     "finishing_position": result.get("finishing_position"),
-                    "laps_completed": result.get("laps_completed", 0),
+                    "laps_completed": result.get(
+                        "laps_completed",
+                        0,
+                    ),
                     "total_time": result.get("total_time"),
                     "fastest_lap_time": result.get("fastest_lap_time"),
                     "fastest_lap_number": result.get("fastest_lap_number"),
-                    "points": result.get("points", 0),
-                    "status": result.get("status", "Classified"),
+                    "points": result.get(
+                        "points",
+                        0,
+                    ),
+                    "status": result.get(
+                        "status",
+                        "Classified",
+                    ),
                 },
             )
+
+            count += 1
+
+        return count
+
+    def _upsert_sprint_results(
+        self,
+        race: Race,
+        season: Season,
+        results: list[dict[str, Any]],
+    ) -> int:
+        count = 0
+
+        for result in results:
+            self._require_result_fields(
+                result,
+                required={"driver_number"},
+                result_type="sprint",
+            )
+
+            driver_entry = self._get_driver_entry(
+                season=season,
+                race=race,
+                driver_number=result["driver_number"],
+            )
+
+            SprintResult.objects.update_or_create(
+                race=race,
+                driver_entry=driver_entry,
+                defaults={
+                    "grid_position": result.get("grid_position"),
+                    "finishing_position": result.get("finishing_position"),
+                    "laps_completed": result.get(
+                        "laps_completed",
+                        0,
+                    ),
+                    "total_time": result.get("total_time"),
+                    "fastest_lap_time": result.get("fastest_lap_time"),
+                    "fastest_lap_number": result.get("fastest_lap_number"),
+                    "points": result.get(
+                        "points",
+                        0,
+                    ),
+                    "status": result.get(
+                        "status",
+                        "Classified",
+                    ),
+                },
+            )
+
             count += 1
 
         return count

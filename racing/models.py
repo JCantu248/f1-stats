@@ -50,14 +50,48 @@ class Driver(models.Model):
 
 class DriverEntry(models.Model):
     racecar = models.ForeignKey(
-        Racecar, on_delete=models.CASCADE, related_name="driver_entries"
+        Racecar,
+        on_delete=models.CASCADE,
+        related_name="driver_entries",
     )
     driver = models.ForeignKey(
-        Driver, on_delete=models.CASCADE, related_name="season_entries"
+        Driver,
+        on_delete=models.CASCADE,
+        related_name="season_entries",
     )
 
+    start_round = models.PositiveIntegerField(default=1)
+    end_round = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=[
+                    "racecar",
+                    "driver",
+                    "start_round",
+                ],
+                name="unique_driver_entry_stint",
+            ),
+            models.CheckConstraint(
+                condition=(
+                    models.Q(end_round__isnull=True)
+                    | models.Q(end_round__gte=models.F("start_round"))
+                ),
+                name="driver_entry_valid_round_range",
+            ),
+        ]
+
     def __str__(self):
-        return f"{self.driver} - {self.racecar}"
+        if self.end_round is None:
+            rounds = f"{self.start_round}+"
+        else:
+            rounds = f"{self.start_round}-{self.end_round}"
+
+        return f"{self.driver} - {self.racecar} ({rounds})"
 
 
 class Circuit(models.Model):
@@ -186,3 +220,120 @@ class RaceResult(models.Model):
 
     def __str__(self):
         return f"{self.race} result - {self.driver_entry.driver}"
+
+
+class SprintQualifyingResult(models.Model):
+    race = models.ForeignKey(
+        Race,
+        on_delete=models.CASCADE,
+        related_name="sprint_qualifying_results",
+    )
+    driver_entry = models.ForeignKey(
+        DriverEntry,
+        on_delete=models.CASCADE,
+        related_name="sprint_qualifying_results",
+    )
+
+    position = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+    )
+
+    q1_time = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+    )
+    q2_time = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+    )
+    q3_time = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+    )
+
+    note = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        ordering = ["position"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["race", "driver_entry"],
+                name="unique_sprint_qualifying_result",
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.race} Sprint Qualifying - {self.driver_entry.driver}"
+
+
+class SprintResult(models.Model):
+    race = models.ForeignKey(
+        Race,
+        on_delete=models.CASCADE,
+        related_name="sprint_results",
+    )
+    driver_entry = models.ForeignKey(
+        DriverEntry,
+        on_delete=models.CASCADE,
+        related_name="sprint_results",
+    )
+
+    grid_position = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+    )
+    finishing_position = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+    )
+
+    laps_completed = models.PositiveIntegerField(
+        default=0,
+    )
+
+    total_time = models.CharField(
+        max_length=30,
+        null=True,
+        blank=True,
+    )
+
+    fastest_lap_time = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+    )
+    fastest_lap_number = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+    )
+
+    points = models.DecimalField(
+        max_digits=5,
+        decimal_places=1,
+        default=0,
+    )
+
+    status = models.CharField(
+        max_length=100,
+        default="Classified",
+    )
+
+    class Meta:
+        ordering = ["finishing_position"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["race", "driver_entry"],
+                name="unique_sprint_result",
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.race} Sprint - {self.driver_entry.driver}"

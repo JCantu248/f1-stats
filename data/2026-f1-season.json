@@ -13,13 +13,17 @@
           "first_name": "Pierre",
           "last_name": "Gasly",
           "nationality": "French",
-          "permanent_number": 10
+          "permanent_number": 10,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "Franco",
           "last_name": "Colapinto",
           "nationality": "Argentinian",
-          "permanent_number": 43
+          "permanent_number": 43,
+          "start_round": 1,
+          "end_round": null
         }
       ]
     },
@@ -35,13 +39,17 @@
           "first_name": "Fernando",
           "last_name": "Alonso",
           "nationality": "Spanish",
-          "permanent_number": 14
+          "permanent_number": 14,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "Lance",
           "last_name": "Stroll",
           "nationality": "Canadian",
-          "permanent_number": 18
+          "permanent_number": 18,
+          "start_round": 1,
+          "end_round": null
         }
       ]
     },
@@ -57,19 +65,23 @@
           "first_name": "Alexander",
           "last_name": "Albon",
           "nationality": "Thai",
-          "permanent_number": 23
+          "permanent_number": 23,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "Carlos",
           "last_name": "Sainz, Jr.",
           "nationality": "Spanish",
-          "permanent_number": 55
+          "permanent_number": 55,
+          "start_round": 1,
+          "end_round": null
         }
       ]
     },
     {
       "name": "Audi Revolut F1 Team",
-      "nation": "Germany  ",
+      "nation": "Germany",
       "racecar": {
         "chassis": "R26",
         "engine": "Audi AFR 26 Hybrid"
@@ -79,13 +91,17 @@
           "first_name": "Gabriel",
           "last_name": "Bartoleto",
           "nationality": "Brazilian",
-          "permanent_number": 5
+          "permanent_number": 5,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "Nico",
           "last_name": "Hulkenberg",
           "nationality": "German",
-          "permanent_number": 27
+          "permanent_number": 27,
+          "start_round": 1,
+          "end_round": null
         }
       ]
     },
@@ -101,13 +117,17 @@
           "first_name": "Sergio",
           "last_name": "Perez",
           "nationality": "Mexican",
-          "permanent_number": 11
+          "permanent_number": 11,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "Valterri",
           "last_name": "Bottas",
           "nationality": "Finnish",
-          "permanent_number": 77
+          "permanent_number": 77,
+          "start_round": 1,
+          "end_round": null
         }
       ]
     },
@@ -123,13 +143,17 @@
           "first_name": "Charles",
           "last_name": "Leclerc",
           "nationality": "Monegasque",
-          "permanent_number": 16
+          "permanent_number": 16,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "Lewis",
           "last_name": "Hamilton",
           "nationality": "British",
-          "permanent_number": 44
+          "permanent_number": 44,
+          "start_round": 1,
+          "end_round": null
         }
       ]
     },
@@ -145,13 +169,17 @@
           "first_name": "Esteban",
           "last_name": "Ocon",
           "nationality": "French",
-          "permanent_number": 31
+          "permanent_number": 31,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "Oliver",
           "last_name": "Bearman",
           "nationality": "British",
-          "permanent_number": 87
+          "permanent_number": 87,
+          "start_round": 1,
+          "end_round": null
         }
       ]
     },
@@ -167,13 +195,17 @@
           "first_name": "Lando",
           "last_name": "Norris",
           "nationality": "British",
-          "permanent_number": 1
+          "permanent_number": 1,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "Oscar",
           "last_name": "Piastri",
           "nationality": "Australian",
-          "permanent_number": 81
+          "permanent_number": 81,
+          "start_round": 1,
+          "end_round": null
         }
       ]
     },
@@ -189,13 +221,17 @@
           "first_name": "Kimi",
           "last_name": "Antonelli",
           "nationality": "Italy",
-          "permanent_number": 12
+          "permanent_number": 12,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "George",
           "last_name": "Russell",
           "nationality": "British",
-          "permanent_number": 63
+          "permanent_number": 63,
+          "start_round": 1,
+          "end_round": null
         }
       ]
     },
@@ -210,14 +246,26 @@
         {
           "first_name": "Liam",
           "last_name": "Lawson",
-          "nationality": "Australian",
-          "permanent_number": 30
+          "nationality": "New Zealander",
+          "permanent_number": 30,
+          "start_round": 1,
+          "end_round": 13
         },
         {
           "first_name": "Arvid",
           "last_name": "Lindblad",
           "nationality": "British",
-          "permanent_number": 41
+          "permanent_number": 41,
+          "start_round": 1,
+          "end_round": null
+        },
+        {
+          "first_name": "Yuki",
+          "last_name": "Tsunoda",
+          "nationality": "Japanese",
+          "permanent_number": 22,
+          "start_round": 14,
+          "end_round": null
         }
       ]
     },
@@ -233,13 +281,25 @@
           "first_name": "Max",
           "last_name": "Verstappen",
           "nationality": "Dutch",
-          "permanent_number": 3
+          "permanent_number": 3,
+          "start_round": 1,
+          "end_round": null
         },
         {
           "first_name": "Isack",
           "last_name": "Hadjar",
           "nationality": "French",
-          "permanent_number": 6
+          "permanent_number": 6,
+          "start_round": 1,
+          "end_round": 13
+        },
+        {
+          "first_name": "Liam",
+          "last_name": "Lawson",
+          "nationality": "New Zealander",
+          "permanent_number": 30,
+          "start_round": 14,
+          "end_round": null
         }
       ]
     }
